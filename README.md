@@ -30,7 +30,7 @@ SDAR achieves substantial improvements over the standard RL baseline on ALFWorld
 </div>
 
 ## 🗞️ News
-- **`2026-5-15`**: 🔥 
+- **`2026-5-15`**: 🔥 We released our paper and code.
 
 ## 🛠️ Installation
 
