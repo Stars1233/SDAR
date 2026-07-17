@@ -30,11 +30,9 @@ SDAR achieves substantial improvements over the standard RL baseline on ALFWorld
 </div>
 
 ## 🗞️ News
-- **`2026-7-17`**: 🔥🔥 We released [SEED](https://arxiv.org/abs/2607.14777), introducing **self-evolving** opd based on SDAR.
-- **`2026-6-25`**: 🔥🔥 We released [OPID](https://arxiv.org/abs/2606.26790), introducing **skill evolving** based on SDAR.
+- **`2026-7-17`**: 🔥🔥 We released [SEED](https://arxiv.org/abs/2607.14777) and its [code](https://github.com/jinyangwu/SEED), introducing **self-evolving** opd based on SDAR.
+- **`2026-6-25`**: 🔥🔥 We released [OPID](https://arxiv.org/abs/2606.26790) and its [code](https://github.com/jinyangwu/OPID), introducing **skill evolving** based on SDAR.
 - **`2026-6-22`**: 🔥 We fixed a bug ([issue #35](https://github.com/ZJU-REAL/SDAR/issues/35)) about AlfWorld teacher skill retrieval problem. Please clone the repo again and have a try.
-- **`2026-6-22`**: 🔥 We fixed a bug ([issue #35](https://github.com/ZJU-REAL/SDAR/issues/35)) about AlfWorld teacher skill retrieval problem. Please clone the repo again and have a try.
-
 - **`2026-5-15`**: 🔥 We released our paper and code.
 
 ## 🛠️ Installation
