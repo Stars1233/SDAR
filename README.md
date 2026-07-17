@@ -30,7 +30,10 @@ SDAR achieves substantial improvements over the standard RL baseline on ALFWorld
 </div>
 
 ## 🗞️ News
-- **`2026-6-22`**: 🔥🔥 We fixed a bug ([issue #35](https://github.com/ZJU-REAL/SDAR/issues/35)) about AlfWorld teacher skill retrieval problem. Please clone the repo again and have a try.
+- **`2026-7-17`**: 🔥🔥 We released [SEED](https://arxiv.org/abs/2607.14777), introducing **self-evolving** opd based on SDAR.
+- **`2026-6-25`**: 🔥🔥 We released [OPID](https://arxiv.org/abs/2606.26790), introducing **skill evolving** based on SDAR.
+- **`2026-6-22`**: 🔥 We fixed a bug ([issue #35](https://github.com/ZJU-REAL/SDAR/issues/35)) about AlfWorld teacher skill retrieval problem. Please clone the repo again and have a try.
+- **`2026-6-22`**: 🔥 We fixed a bug ([issue #35](https://github.com/ZJU-REAL/SDAR/issues/35)) about AlfWorld teacher skill retrieval problem. Please clone the repo again and have a try.
 
 - **`2026-5-15`**: 🔥 We released our paper and code.
 
@@ -186,6 +189,24 @@ If you find this project useful, welcome to cite us.
       archivePrefix={arXiv},
       primaryClass={cs.LG},
       url={https://arxiv.org/abs/2604.02268}, 
+}
+@misc{wu2026seed,
+      title={SEED: Self-Evolving On-Policy Distillation for Agentic Reinforcement Learning}, 
+      author={Jinyang Wu and Shuo Yang and Zhengxi Lu and Fan Zhang and Yuhao Shen and Lang Feng and Haoran Luo and Zheng Lian and Shuai Zhang and Zhengqi Wen and Jianhua Tao},
+      year={2026},
+      eprint={2607.14777},
+      archivePrefix={arXiv},
+      primaryClass={cs.CL},
+      url={https://arxiv.org/abs/2607.14777}, 
+}
+@misc{yang2026opid,
+      title={OPID: On-Policy Skill Distillation for Agentic Reinforcement Learning}, 
+      author={Shuo Yang and Jinyang Wu and Zhengxi Lu and Yuhao Shen and Fan Zhang and Lang Feng and Shuai Zhang and Haoran Luo and Zheng Lian and Zhengqi Wen and Jianhua Tao},
+      year={2026},
+      eprint={2606.26790},
+      archivePrefix={arXiv},
+      primaryClass={cs.CL},
+      url={https://arxiv.org/abs/2606.26790}, 
 }
 @misc{shi2026skill1,
       title={Skill1: Unified Evolution of Skill-Augmented Agents via Reinforcement Learning}, 
