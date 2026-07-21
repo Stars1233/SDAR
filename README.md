@@ -21,19 +21,25 @@ We introduce **SDAR**, a Self-Distilled Agentic Reinforcement learning method.
   <img src="docs/sdar/sdart_method.png" alt="method" style="width:58%;">
 </div>
 
+## 🗞️ Awesome Work Powered by SDAR
+SDAR is known as the **first** open-sourced framework that unifies Agentic RL with OP(S)D, providing a codebase that has enabled the following works:
+- **SEED**: Self-Evolving On-Policy Distillation for Agentic Reinforcement Learning [[Paper]](https://arxiv.org/abs/2607.14777) [[Code]](https://github.com/jinyangwu/SEED)
+- **OPID**: On-Policy Skill Distillation for Agentic Reinforcement Learning [[Paper]](https://arxiv.org/abs/2606.26790) [[Code]](https://github.com/jinyangwu/OPID)
+- **UCOB**: Learning to Utilize and Evolve Agentic Skills via Credit-Aware On-Policy Bidirectional Self-Distillation [[Paper]](https://arxiv.org/abs/2606.29502) [[Code]](https://github.com/TU2021/UCOB)
+- **StepOPSD**: Step-Aware Online Preference Distillation for Agent Reinforcement Learning [[Paper]](https://arxiv.org/abs/2605.27140)
+- **CRAFT**: Counterfactual Credit Assignment from Free Sibling Rollouts for Self-Distilled Agentic Reinforcement Learning [[Paper]](https://arxiv.org/abs/2606.29476)
 
-
-
-SDAR achieves substantial improvements over the standard RL baseline on ALFWorld, WebShop, and Search-QA.
-<div align="center">
-  <img src="docs/sdar/metric.png" alt="Logo" style="width:80%;">
-</div>
-
-## 🗞️ News
+## 📢 News
 - **`2026-7-17`**: 🔥🔥 We released [SEED](https://arxiv.org/abs/2607.14777) and its [code](https://github.com/jinyangwu/SEED), introducing **self-evolving** opd based on SDAR.
 - **`2026-6-25`**: 🔥🔥 We released [OPID](https://arxiv.org/abs/2606.26790) and its [code](https://github.com/jinyangwu/OPID), introducing **skill evolving** based on SDAR.
 - **`2026-6-22`**: 🔥 We fixed a bug ([issue #35](https://github.com/ZJU-REAL/SDAR/issues/35)) about AlfWorld teacher skill retrieval problem. Please clone the repo again and have a try.
 - **`2026-5-15`**: 🔥 We released our paper and code.
+
+## 📖 Results
+SDAR achieves substantial improvements over the standard RL baseline on ALFWorld, WebShop, and Search-QA.
+<div align="center">
+  <img src="docs/sdar/metric.png" alt="Logo" style="width:80%;">
+</div>
 
 ## 🛠️ Installation
 
