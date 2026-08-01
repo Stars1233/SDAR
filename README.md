@@ -26,6 +26,8 @@ SDAR is known as the **first** open-sourced framework that unifies Agentic RL wi
 - **SEED**: Self-Evolving On-Policy Distillation for Agentic Reinforcement Learning [[Paper]](https://arxiv.org/abs/2607.14777) [[Code]](https://github.com/jinyangwu/SEED)
 - **OPID**: On-Policy Skill Distillation for Agentic Reinforcement Learning [[Paper]](https://arxiv.org/abs/2606.26790) [[Code]](https://github.com/jinyangwu/OPID)
 - **UCOB**: Learning to Utilize and Evolve Agentic Skills via Credit-Aware On-Policy Bidirectional Self-Distillation [[Paper]](https://arxiv.org/abs/2606.29502) [[Code]](https://github.com/TU2021/UCOB)
+- **GRSD**: Group-Reflective Self-Distillation for Agentic Reinforcement Learning
+ [[Paper]](https://arxiv.org/abs/2607.28076) [[Code]](https://github.com/BinbZheng1/GRSD)
 - **StepOPSD**: Step-Aware Online Preference Distillation for Agent Reinforcement Learning [[Paper]](https://arxiv.org/abs/2605.27140)
 - **CRAFT**: Counterfactual Credit Assignment from Free Sibling Rollouts for Self-Distilled Agentic Reinforcement Learning [[Paper]](https://arxiv.org/abs/2606.29476)
 
