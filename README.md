@@ -31,7 +31,6 @@ SDAR is known as the **first** open-sourced framework that unifies Agentic RL wi
 - **StepOPSD**: Step-Aware Online Preference Distillation for Agent Reinforcement Learning [[Paper]](https://arxiv.org/abs/2605.27140)
 - **CRAFT**: Counterfactual Credit Assignment from Free Sibling Rollouts for Self-Distilled Agentic Reinforcement Learning [[Paper]](https://arxiv.org/abs/2606.29476)
 
-❓ If I have missed any works powered by SDAR, please feel free to contact me at zhengxilu@zju.edu.cn.
 
 ## 📢 News
 - **`2026-7-17`**: 🔥🔥 We released [SEED](https://arxiv.org/abs/2607.14777) and its [code](https://github.com/jinyangwu/SEED), introducing **self-evolving** opd based on SDAR.
