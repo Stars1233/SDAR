@@ -25,8 +25,9 @@ We introduce **SDAR**, a Self-Distilled Agentic Reinforcement learning method.
 SDAR is known as the **first** open-sourced framework that unifies Agentic RL with OP(S)D, providing a codebase that has enabled the following works:
 - **SEED**: Self-Evolving On-Policy Distillation for Agentic Reinforcement Learning [[Paper]](https://arxiv.org/abs/2607.14777) [[Code]](https://github.com/jinyangwu/SEED)
 - **OPID**: On-Policy Skill Distillation for Agentic Reinforcement Learning [[Paper]](https://arxiv.org/abs/2606.26790) [[Code]](https://github.com/jinyangwu/OPID)
-- **ATOD**: Annealed Turn-Aware On-Policy Distillation for Multi-Turn Agentic Tasks [[Paper]](https://arxiv.org/abs/2606.27814) [[Code]](https://github.com/TanQitai/ATOD)
 - **UCOB**: Learning to Utilize and Evolve Agentic Skills via Credit-Aware On-Policy Bidirectional Self-Distillation [[Paper]](https://arxiv.org/abs/2606.29502) [[Code]](https://github.com/TU2021/UCOB)
+- **From Proprietary to Open-Source**: Bridging the Distribution Gap via Multi-Agent Protocol Distillation in Agentic Search [[Paper]](https://arxiv.org/abs/2607.24280) [[Code]](https://github.com/AaronLiu0702/MAPD)
+- **ATOD**: Annealed Turn-Aware On-Policy Distillation for Multi-Turn Agentic Tasks [[Paper]](https://arxiv.org/abs/2606.27814) [[Code]](https://github.com/TanQitai/ATOD)
 - **GRSD**: Group-Reflective Self-Distillation for Agentic Reinforcement Learning
  [[Paper]](https://arxiv.org/abs/2607.28076) [[Code]](https://github.com/BinbZheng1/GRSD)
 - **StepOPSD**: Step-Aware Online Preference Distillation for Agent Reinforcement Learning [[Paper]](https://arxiv.org/abs/2605.27140)
