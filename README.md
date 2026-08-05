@@ -11,25 +11,6 @@ Self-Distilled Agentic Reinforcement Learning
     </a>
   </p>
 </div>
-<div align='center' style="font-size:18px;">
-<p>
-    <a href="https://github.com/ZJU-REAL/SkillZero">
-      [Skill0]
-    </a>
-    <a href="https://github.com/AlphaLab-USTC/Skill1">
-      [Skill1]
-    </a>
-    <a href="https://github.com/jinyangwu/OPID">
-      [OPID]
-    </a>
-    <a href="https://github.com/jinyangwu/SEED">
-      [SEED]
-    </a>
-    <a href="https://github.com/Within-yao/SkillRise">
-      [SkillRise]
-    </a>
-</p>
-</div>
 
 ## 🔥 Overview
 
