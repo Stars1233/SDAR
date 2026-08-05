@@ -35,10 +35,12 @@ SDAR is known as the **first** open-sourced framework that unifies Agentic RL wi
 
 
 ## 📢 News
-- **`2026-7-17`**: 🔥🔥 We released [SEED](https://arxiv.org/abs/2607.14777) and its [code](https://github.com/jinyangwu/SEED), introducing **self-evolving** opd based on SDAR.
-- **`2026-6-25`**: 🔥🔥 We released [OPID](https://arxiv.org/abs/2606.26790) and its [code](https://github.com/jinyangwu/OPID), introducing **skill evolving** based on SDAR.
+- **`2026-7-29`**: 🔥🔥 We released [SkillRise](https://github.com/Within-yao/SkillRise), introducing **cross-task skill evolution** via agentic RL.
+- **`2026-7-17`**: 🔥🔥 We released [SEED](https://github.com/jinyangwu/SEED), introducing **self-evolving** opd based on SDAR.
+- **`2026-6-25`**: 🔥 We released [OPID](https://github.com/jinyangwu/OPID), introducing **skill evolving** based on SDAR.
 - **`2026-6-22`**: 🔥 We fixed a bug ([issue #35](https://github.com/ZJU-REAL/SDAR/issues/35)) about AlfWorld teacher skill retrieval problem. Please clone the repo again and have a try.
-- **`2026-5-15`**: 🔥 We released our paper and code.
+- **`2026-5-15`**: 🔥 We released our paper and code for SDAR.
+- **`2026-4**: See our previous works [Skill0](https://github.com/ZJU-REAL/SkillZero) and [Skill1](https://github.com/AlphaLab-USTC/Skill1), about lifecycle of agent skills.
 
 ## 📖 Results
 SDAR achieves substantial improvements over the standard RL baseline on ALFWorld, WebShop, and Search-QA.
@@ -209,6 +211,12 @@ If you find this project useful, welcome to cite us.
   title={Skill1: Unified evolution of skill-augmented agents via reinforcement learning},
   author={Shi, Yaorui and Chen, Yuxin and Lu, Zhengxi and Miao, Yuchun and Liu, Shugui and Gu, Qi and Cai, Xunliang and Wang, Xiang and Zhang, An},
   journal={arXiv preprint arXiv:2605.06130},
+  year={2026}
+}
+@article{yao2026skillrise,
+  title={SkillRise: Agentic Reinforcement Learning for Cross-Task Skill Evolution},
+  author={Yao, Zhiyuan and Chen, Yuxin and Lu, Zhengxi and Xu, Zishan and Sun, Yueqing and Guo, Yifu and Lu, Yuquan and Cai, Zhengzhou and Zhang, Kangning and Han, Zhuowen and others},
+  journal={arXiv preprint arXiv:2607.26784},
   year={2026}
 }
 ```
