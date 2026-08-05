@@ -181,7 +181,7 @@ See `scripts/model_merger.py` for FSDP/Megatron merge examples using paths under
 If you find this project useful, welcome to cite us.
 
 ```bibtex
-@article{lu2026self,
+@article{lu2026sdar,
   title={Self-distilled agentic reinforcement learning},
   author={Lu, Zhengxi and Yao, Zhiyuan and Han, Zhuowen and Wang, Zi-Han and Wu, Jinyang and Gu, Qi and Cai, Xunliang and Lu, Weiming and Xiao, Jun and Zhuang, Yueting and others},
   journal={arXiv preprint arXiv:2605.15155},
