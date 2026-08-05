@@ -40,7 +40,7 @@ SDAR is known as the **first** open-sourced framework that unifies Agentic RL wi
 - **`2026-6-25`**: 🔥 We released [OPID](https://github.com/jinyangwu/OPID), introducing **skill evolving** based on SDAR.
 - **`2026-6-22`**: 🔥 We fixed a bug ([issue #35](https://github.com/ZJU-REAL/SDAR/issues/35)) about AlfWorld teacher skill retrieval problem. Please clone the repo again and have a try.
 - **`2026-5-15`**: 🔥 We released our paper and code for SDAR.
-- **`2026-4**: See our previous works [Skill0](https://github.com/ZJU-REAL/SkillZero) and [Skill1](https://github.com/AlphaLab-USTC/Skill1), about lifecycle of agent skills.
+- **`2026-4`**: See our previous works [Skill0](https://github.com/ZJU-REAL/SkillZero) and [Skill1](https://github.com/AlphaLab-USTC/Skill1), about lifecycle of agent skills.
 
 ## 📖 Results
 SDAR achieves substantial improvements over the standard RL baseline on ALFWorld, WebShop, and Search-QA.
