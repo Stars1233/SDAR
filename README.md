@@ -29,6 +29,7 @@ SDAR is known as the **first** open-sourced framework that unifies Agentic RL wi
 - **ATOD**: Annealed Turn-Aware On-Policy Distillation for Multi-Turn Agentic Tasks [[Paper]](https://arxiv.org/abs/2606.27814) [[Code]](https://github.com/TanQitai/ATOD)
 - **GRSD**: Group-Reflective Self-Distillation for Agentic Reinforcement Learning [[Paper]](https://arxiv.org/abs/2607.28076) [[Code]](https://github.com/BinbZheng1/GRSD)
 - **OVCSD**: From Scoring to Acting: Outcome-Verified Comparative Self-Distillation for LLM Agents [[Paper]](https://arxiv.org/abs/2607.27937) [[Code]](https://github.com/shane990928-xia/OVCSD)
+- **PCSD**: Persistent Consistency for Self-Distillation in Agentic Reinforcement Learning [[Paper]](https://arxiv.org/abs/2608.01837)
 - **StepOPSD**: Step-Aware Online Preference Distillation for Agent Reinforcement Learning [[Paper]](https://arxiv.org/abs/2605.27140)
 - **CRAFT**: Counterfactual Credit Assignment from Free Sibling Rollouts for Self-Distilled Agentic Reinforcement Learning [[Paper]](https://arxiv.org/abs/2606.29476)
 
