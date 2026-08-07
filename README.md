@@ -24,6 +24,7 @@ We introduce **SDAR**, a Self-Distilled Agentic Reinforcement learning method.
 SDAR is known as the **first** open-sourced framework that unifies Agentic RL with OP(S)D, providing a codebase that has enabled the following works:
 - **SEED**: Self-Evolving On-Policy Distillation for Agentic Reinforcement Learning [[Paper]](https://arxiv.org/abs/2607.14777) [[Code]](https://github.com/jinyangwu/SEED)
 - **OPID**: On-Policy Skill Distillation for Agentic Reinforcement Learning [[Paper]](https://arxiv.org/abs/2606.26790) [[Code]](https://github.com/jinyangwu/OPID)
+- **AgentOPSD**: Recursive Self-Distillation for Agentic Reinforcement Learning [[Paper]](https://arxiv.org/abs/2608.05987) [[Code]](https://github.com/ZethWang/AgentOPSD)
 - **UCOB**: Learning to Utilize and Evolve Agentic Skills via Credit-Aware On-Policy Bidirectional Self-Distillation [[Paper]](https://arxiv.org/abs/2606.29502) [[Code]](https://github.com/TU2021/UCOB)
 - **MAPD**: From Proprietary to Open-Source: Bridging the Distribution Gap via Multi-Agent Protocol Distillation in Agentic Search [[Paper]](https://arxiv.org/abs/2607.24280) [[Code]](https://github.com/AaronLiu0702/MAPD)
 - **ATOD**: Annealed Turn-Aware On-Policy Distillation for Multi-Turn Agentic Tasks [[Paper]](https://arxiv.org/abs/2606.27814) [[Code]](https://github.com/TanQitai/ATOD)
@@ -35,6 +36,7 @@ SDAR is known as the **first** open-sourced framework that unifies Agentic RL wi
 
 
 ## 📢 News
+- **`2026-8-6`**: 🔥🔥 We released [AgentOPSD](https://github.com/ZethWang/AgentOPSD), introducing **recursive credit update** for SDAR.
 - **`2026-7-29`**: 🔥🔥 We released [SkillRise](https://github.com/Within-yao/SkillRise), introducing **cross-task skill evolution** via agentic RL.
 - **`2026-7-17`**: 🔥🔥 We released [SEED](https://github.com/jinyangwu/SEED), introducing **self-evolving** opd based on SDAR.
 - **`2026-6-25`**: 🔥 We released [OPID](https://github.com/jinyangwu/OPID), introducing **skill evolving** based on SDAR.
@@ -194,6 +196,15 @@ If you find this project useful, welcome to cite us.
   author={Lu, Zhengxi and Yao, Zhiyuan and Wu, Jinyang and Han, Chengcheng and Gu, Qi and Cai, Xunliang and Lu, Weiming and Xiao, Jun and Zhuang, Yueting and Shen, Yongliang},
   journal={arXiv preprint arXiv:2604.02268},
   year={2026}
+}
+@misc{wang2026agentopsd,
+      title={AgentOPSD: Recursive Self-Distillation for Agentic Reinforcement Learning}, 
+      author={Zi-Han Wang and Zhengxi Lu and Zhiyuan Yao and Jinyang Wu and Jie Wu and Zhengzhou Cai and Yueqing Sun and Ziang Ye and Linji Hao and Qi Gu and Xunliang Cai and Yongliang Shen and Yujiu Yang},
+      year={2026},
+      eprint={2608.05987},
+      archivePrefix={arXiv},
+      primaryClass={cs.AI},
+      url={https://arxiv.org/abs/2608.05987}, 
 }
 @article{wu2026seed,
   title={SEED: Self-Evolving On-Policy Distillation for Agentic Reinforcement Learning},
