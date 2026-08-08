@@ -13,28 +13,35 @@ Self-Distilled Agentic Reinforcement Learning
 </div>
 
 ## 🔥 Overview
+SDAR is known as the **first** open-sourced framework that unifies Agentic RL with OP(S)D.
+#### Quick Feature Summary
+| Feature Category  | Supported Capabilities                                       |
+| ----------------- | ------------------------------------------------------------ |
+| **Method**        | ✅ OPSD<br> ✅ GRPO<br> ✅ GRPO+OPSD<br>  ✅ RLSD<br>  ✅ Skill-SD<br>  ✅ **SDAR (Ours)** |
+| **Environment**   | ✅ ALFWorld<br> ✅ WebShop<br> ✅ Search-QA                             |
+| **Model Support** | ✅ Qwen3<br> ✅ Qwen2.5                                            |
 
-We introduce **SDAR**, a Self-Distilled Agentic Reinforcement learning method.
+We introduce **SDAR**, a Self-Distilled Agentic Reinforcement learning method with gating mechanism.
 <div align="center" style="display:flex; justify-content:center; gap:20px; align-items:flex-start;">
   <img src="docs/sdar/sdar_teaser.png" alt="motivation" style="width:40%;">
   <img src="docs/sdar/sdart_method.png" alt="method" style="width:58%;">
 </div>
 
 ## 🗞️ Awesome Work Powered by SDAR
-SDAR is known as the **first** open-sourced framework that unifies Agentic RL with OP(S)D, providing a codebase that has enabled the following works:
-- **SEED**: Self-Evolving On-Policy Distillation for Agentic Reinforcement Learning [[Paper]](https://arxiv.org/abs/2607.14777) [[Code]](https://github.com/jinyangwu/SEED)
-- **OPID**: On-Policy Skill Distillation for Agentic Reinforcement Learning [[Paper]](https://arxiv.org/abs/2606.26790) [[Code]](https://github.com/jinyangwu/OPID)
+Our SDAR provides a codebase that has supported the following works, listed in reverse time order (most recent first):
 - **AgentOPSD**: Recursive Self-Distillation for Agentic Reinforcement Learning [[Paper]](https://arxiv.org/abs/2608.05987) [[Code]](https://github.com/ZethWang/AgentOPSD)
-- **UCOB**: Learning to Utilize and Evolve Agentic Skills via Credit-Aware On-Policy Bidirectional Self-Distillation [[Paper]](https://arxiv.org/abs/2606.29502) [[Code]](https://github.com/TU2021/UCOB)
-- **MAPD**: From Proprietary to Open-Source: Bridging the Distribution Gap via Multi-Agent Protocol Distillation in Agentic Search [[Paper]](https://arxiv.org/abs/2607.24280) [[Code]](https://github.com/AaronLiu0702/MAPD)
-- **ATOD**: Annealed Turn-Aware On-Policy Distillation for Multi-Turn Agentic Tasks [[Paper]](https://arxiv.org/abs/2606.27814) [[Code]](https://github.com/TanQitai/ATOD)
+- **OCSD**: Agentic Reinforcement Learning with Observation-Calibrated Self-Distillation [[Paper]](https://arxiv.org/pdf/2608.04788) [[Code]](https://github.com/yiy1x/OCSD)
+- **ADRS**: Agentic Reinforcement Learning with Self-Distilled Reward Shaping [[Paper]](https://arxiv.org/abs/2608.03223) [[Code]](https://github.com/gitrxh/ADRS-arxiv)
+- **PCSD**: Persistent Consistency for Self-Distillation in Agentic Reinforcement Learning [[Paper]](https://arxiv.org/abs/2608.01837)
 - **GRSD**: Group-Reflective Self-Distillation for Agentic Reinforcement Learning [[Paper]](https://arxiv.org/abs/2607.28076) [[Code]](https://github.com/BinbZheng1/GRSD)
 - **OVCSD**: From Scoring to Acting: Outcome-Verified Comparative Self-Distillation for LLM Agents [[Paper]](https://arxiv.org/abs/2607.27937) [[Code]](https://github.com/shane990928-xia/OVCSD)
-- **PCSD**: Persistent Consistency for Self-Distillation in Agentic Reinforcement Learning [[Paper]](https://arxiv.org/abs/2608.01837)
-- **ADRS**: Agentic Reinforcement Learning with Self-Distilled Reward Shaping [[Paper]](https://arxiv.org/abs/2608.03223) [[Code]](https://github.com/gitrxh/ADRS-arxiv)
-- **OCSD**: Agentic Reinforcement Learning with Observation-Calibrated Self-Distillation [[Paper]](https://arxiv.org/pdf/2608.04788) [[Code]](https://github.com/yiy1x/OCSD)
-- **StepOPSD**: Step-Aware Online Preference Distillation for Agent Reinforcement Learning [[Paper]](https://arxiv.org/abs/2605.27140)
+- **MAPD**: From Proprietary to Open-Source: Bridging the Distribution Gap via Multi-Agent Protocol Distillation in Agentic Search [[Paper]](https://arxiv.org/abs/2607.24280) [[Code]](https://github.com/AaronLiu0702/MAPD)
+- **SEED**: Self-Evolving On-Policy Distillation for Agentic Reinforcement Learning [[Paper]](https://arxiv.org/abs/2607.14777) [[Code]](https://github.com/jinyangwu/SEED)
+- **UCOB**: Learning to Utilize and Evolve Agentic Skills via Credit-Aware On-Policy Bidirectional Self-Distillation [[Paper]](https://arxiv.org/abs/2606.29502) [[Code]](https://github.com/TU2021/UCOB)
 - **CRAFT**: Counterfactual Credit Assignment from Free Sibling Rollouts for Self-Distilled Agentic Reinforcement Learning [[Paper]](https://arxiv.org/abs/2606.29476)
+- **ATOD**: Annealed Turn-Aware On-Policy Distillation for Multi-Turn Agentic Tasks [[Paper]](https://arxiv.org/abs/2606.27814) [[Code]](https://github.com/TanQitai/ATOD)
+- **OPID**: On-Policy Skill Distillation for Agentic Reinforcement Learning [[Paper]](https://arxiv.org/abs/2606.26790) [[Code]](https://github.com/jinyangwu/OPID)
+- **StepOPSD**: Step-Aware Online Preference Distillation for Agent Reinforcement Learning [[Paper]](https://arxiv.org/abs/2605.27140)
 
 
 ## 📢 News
