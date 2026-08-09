@@ -37,13 +37,13 @@ SDAR is known as the **first** open-sourced framework that unifies Agentic RL wi
 
 
 ## 📢 News
-- **`2026-8-6`**: 🔥🔥 We released [AgentOPSD](https://github.com/ZethWang/AgentOPSD), introducing **recursive credit update** for SDAR.
+- **`2026-8-6`**: 🔥🔥 We released [AgentOPSD](https://github.com/ZethWang/AgentOPSD), introducing **recursive credit update** for SDAR. Featured as 🤗 HF Daily Paper #1!
 - **`2026-7-29`**: 🔥🔥 We released [SkillRise](https://github.com/Within-yao/SkillRise), introducing **cross-task skill evolution** via agentic RL.
-- **`2026-7-17`**: 🔥🔥 We released [SEED](https://github.com/jinyangwu/SEED), introducing **self-evolving** opd based on SDAR.
+- **`2026-7-17`**: 🔥🔥 We released [SEED](https://github.com/jinyangwu/SEED), introducing **self-evolving** opd based on SDAR. Featured as 🤗 HF Daily Paper #3!
 - **`2026-6-25`**: 🔥 We released [OPID](https://github.com/jinyangwu/OPID), introducing **skill evolving** based on SDAR.
 - **`2026-6-22`**: 🔥 We fixed a bug ([issue #35](https://github.com/ZJU-REAL/SDAR/issues/35)) about AlfWorld teacher skill retrieval problem. Please clone the repo again and have a try.
-- **`2026-5-15`**: 🔥 We released our paper and code for SDAR.
-- **`2026-4`**: See our previous works [Skill0](https://github.com/ZJU-REAL/SkillZero) and [Skill1](https://github.com/AlphaLab-USTC/Skill1), about lifecycle of agent skills.
+- **`2026-5-15`**: 🔥 We released our paper and code for SDAR. Featured as 🤗 HF Daily Paper #2!
+- **`2026-4`**: Previously, we released [Skill0](https://github.com/ZJU-REAL/SkillZero) and [Skill1](https://github.com/AlphaLab-USTC/Skill1), about lifecycle of agent skills. They are both featured as 🤗 HF Daily Paper #2!
 
 ## 📖 Quick Feature Summary
 
