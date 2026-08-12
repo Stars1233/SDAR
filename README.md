@@ -21,6 +21,7 @@ We introduce **SDAR**, a Self-Distilled Agentic Reinforcement learning method wi
 
 ## 🗞️ Awesome Work Powered by SDAR
 SDAR is known as the **first** open-sourced framework that unifies Agentic RL with OP(S)D, providing a codebase that has supported the following works (listed in reverse time order and most recent first):
+- **BCSD**: Bidirectional Context Self-Distillation for Reinforcement Learning of Skill-Based LLM Agents [[Paper]](https://arxiv.org/abs/2608.09555)
 - **AgentOPSD**: Recursive Self-Distillation for Agentic Reinforcement Learning [[Paper]](https://arxiv.org/abs/2608.05987) [[Code]](https://github.com/ZethWang/AgentOPSD)
 - **OCSD**: Agentic Reinforcement Learning with Observation-Calibrated Self-Distillation [[Paper]](https://arxiv.org/pdf/2608.04788) [[Code]](https://github.com/yiy1x/OCSD)
 - **ADRS**: Agentic Reinforcement Learning with Self-Distilled Reward Shaping [[Paper]](https://arxiv.org/abs/2608.03223) [[Code]](https://github.com/gitrxh/ADRS-arxiv)
