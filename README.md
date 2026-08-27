@@ -40,12 +40,13 @@ SDAR is known as the **first** open-sourced framework that unifies Agentic RL wi
 
 
 ## 📢 News
-- **`2026-8-6`**: 🔥🔥 We released [AgentOPSD](https://github.com/ZethWang/AgentOPSD), introducing **recursive credit update** for SDAR. Featured as 🤗 HF Daily Paper #1!
-- **`2026-7-29`**: 🔥🔥 We released [SkillRise](https://github.com/Within-yao/SkillRise), introducing **cross-task skill evolution** via agentic RL.
-- **`2026-7-17`**: 🔥🔥 We released [SEED](https://github.com/jinyangwu/SEED), introducing **self-evolving** opd based on SDAR. Featured as 🤗 HF Daily Paper #3!
-- **`2026-6-25`**: 🔥 We released [OPID](https://github.com/jinyangwu/OPID), introducing **skill evolving** based on SDAR.
-- **`2026-6-22`**: 🔥 We fixed a bug ([issue #35](https://github.com/ZJU-REAL/SDAR/issues/35)) about AlfWorld teacher skill retrieval problem. Please clone the repo again and have a try.
-- **`2026-5-15`**: 🔥 We released our paper and code for SDAR. Featured as 🤗 HF Daily Paper #2!
+- **`2026-8-24`**: 🔥🔥 We released [Agent-G2](https://github.com/ZJU-REAL/Agent-G2), introducing Gaussian hint guidance for Agentic RL.
+- **`2026-8-6`**: 🔥 We released [AgentOPSD](https://github.com/ZethWang/AgentOPSD), introducing **recursive credit update** for SDAR. Featured as 🤗 HF Daily Paper #1!
+- **`2026-7-29`**: We released [SkillRise](https://github.com/Within-yao/SkillRise), introducing **cross-task skill evolution** via agentic RL.
+- **`2026-7-17`**: We released [SEED](https://github.com/jinyangwu/SEED), introducing **self-evolving** opd based on SDAR. Featured as 🤗 HF Daily Paper #3!
+- **`2026-6-25`**: We released [OPID](https://github.com/jinyangwu/OPID), introducing **skill evolving** based on SDAR.
+- **`2026-6-22`**: We fixed a bug ([issue #35](https://github.com/ZJU-REAL/SDAR/issues/35)) about AlfWorld teacher skill retrieval problem. Please clone the repo again and have a try.
+- **`2026-5-15`**: We released our paper and code for SDAR. Featured as 🤗 HF Daily Paper #2!
 - **`2026-4`**: Previously, we released [Skill0](https://github.com/ZJU-REAL/SkillZero) and [Skill1](https://github.com/AlphaLab-USTC/Skill1), about lifecycle of agent skills. They are both featured as 🤗 HF Daily Paper #2!
 
 ## 📖 Quick Feature Summary
@@ -238,6 +239,15 @@ If you find this project useful, welcome to cite us.
   author={Yao, Zhiyuan and Chen, Yuxin and Lu, Zhengxi and Xu, Zishan and Sun, Yueqing and Guo, Yifu and Lu, Yuquan and Cai, Zhengzhou and Zhang, Kangning and Han, Zhuowen and others},
   journal={arXiv preprint arXiv:2607.26784},
   year={2026}
+}
+@misc{wang2026agentg2,
+      title={Agent-G$^2$: Gaussian Guidance for Agentic Reinforcement Learning},
+      author={Zixuan Wang and Yanrui Miao and Zhengxi Lu and Teng Pan and Yiwen Qiu and Hongxing Li and Peng Qiu and Ruiqing Zhang and Yongliang Shen},
+      year={2026},
+      eprint={2608.23318},
+      archivePrefix={arXiv},
+      primaryClass={cs.AI},
+      url={https://arxiv.org/abs/2608.23318},
 }
 ```
 
