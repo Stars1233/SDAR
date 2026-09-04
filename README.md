@@ -21,6 +21,7 @@ We introduce **SDAR**, a Self-Distilled Agentic Reinforcement learning method wi
 
 ## 🗞️ Awesome Work Powered by SDAR
 SDAR is known as the **first** open-sourced framework that unifies Agentic RL with OP(S)D, providing a codebase that has supported the following works (listed in reverse time order and most recent first):
+- **TASPO**: Reconciling Process Supervision with Outcome-Based Credit in Agentic Policy Optimization [[Paper]](https://arxiv.org/abs/2608.31077)
 - **AHEAD**: Adaptive Hindsight with Environment-Augmented Distillation for Agentic RL [[Paper]](https://arxiv.org/abs/2608.24114) [[Code]](https://jinxiaolong1129.github.io/AHEAD/)
 - **ICSD**: Trust Is Not Enough: Influence Calibration for On-Policy Self-Distillation in Agentic RL [[Paper]](https://arxiv.org/abs/2608.14945) [[Code]](https://github.com/lanqz7766/Influence-Calibration-for-On-Policy-Self-Distillation-in-Agentic-RL)
 - **BCSD**: Bidirectional Context Self-Distillation for Reinforcement Learning of Skill-Based LLM Agents [[Paper]](https://arxiv.org/abs/2608.09555)
