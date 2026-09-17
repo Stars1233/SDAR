@@ -18,7 +18,6 @@ Single Process Actor
 """
 
 import itertools
-import time
 import logging
 import os
 from typing import Tuple
@@ -36,7 +35,7 @@ from verl.utils.fsdp_utils import FSDPModule, fsdp2_clip_grad_norm_
 from verl.utils.py_functional import append_to_dict
 from verl.utils.seqlen_balancing import get_reverse_idx, rearrange_micro_batches
 from verl.utils.torch_functional import logprobs_from_logits
-from verl.utils.ulysses import gather_outpus_and_unpad, ulysses_pad_and_slice_inputs, ulysses_pad
+from verl.utils.ulysses import gather_outpus_and_unpad, ulysses_pad, ulysses_pad_and_slice_inputs
 from verl.workers.actor import BasePPOActor
 
 if is_cuda_available:
@@ -320,6 +319,7 @@ class DataParallelPPOActor(BasePPOActor):
 
         temperature = data.meta_info["temperature"]  # temperature must be in the data.meta_info to avoid silent error
         multi_turn = data.meta_info.get("multi_turn", False)
+        sdl_coef = data.meta_info.get("sdl_coef", self.config.get("sdl_loss_coef", 0.1))
 
         select_keys = ["responses", "input_ids", "attention_mask", "position_ids", "old_log_probs", "advantages"]
         if multi_turn:
@@ -438,7 +438,6 @@ class DataParallelPPOActor(BasePPOActor):
                             response_mask=response_mask,
                             loss_agg_mode=loss_agg_mode,
                         )
-                        sdl_coef = self.config.get("sdl_loss_coef", 0.1)
                         policy_loss = policy_loss + sdl_loss * sdl_coef
                         metrics["actor/sdl_loss"] = sdl_loss.detach().item()
                         metrics["actor/sdl_coef"] = sdl_coef
@@ -477,5 +476,98 @@ class DataParallelPPOActor(BasePPOActor):
                 grad_norm = self._optimizer_step()
                 data = {"actor/grad_norm": grad_norm.detach().item()}
                 append_to_dict(metrics, data)
+        self.actor_optimizer.zero_grad()
+        return metrics
+
+    @GPUMemoryLogger(role="dp actor", logger=logger)
+    def update_opd_policy(self, data: DataProto):
+        """Update the policy with fixed-coefficient sampled K3-IS distillation."""
+
+        from verl.trainer.ppo.skillsd_utils import compute_sdl_loss
+
+        self.actor_module.train()
+        temperature = data.meta_info["temperature"]
+        multi_turn = data.meta_info.get("multi_turn", False)
+        opd_coef = float(self.config.get("opd_coef", 0.01))
+        if opd_coef < 0:
+            raise ValueError("opd_coef must be nonnegative")
+
+        select_keys = [
+            "responses",
+            "input_ids",
+            "attention_mask",
+            "position_ids",
+            "old_log_probs",
+            "teacher_log_probs",
+        ]
+        if multi_turn:
+            select_keys.append("loss_mask")
+        batch = data.select(batch_keys=select_keys).batch
+        has_multi_modal_inputs = "multi_modal_inputs" in data.non_tensor_batch
+
+        if has_multi_modal_inputs:
+            num_mini_batches = data.batch.batch_size[0] // self.config.ppo_mini_batch_size
+            non_tensor_select_keys = ["multi_modal_inputs"]
+            dataloader = data.select(select_keys, non_tensor_select_keys).chunk(num_mini_batches)
+        else:
+            dataloader = batch.split(self.config.ppo_mini_batch_size)
+
+        metrics = {}
+        for _ in range(self.config.ppo_epochs):
+            for mini_batch in dataloader:
+                if has_multi_modal_inputs:
+                    self.gradient_accumulation = self.config.ppo_mini_batch_size // self.config.ppo_micro_batch_size_per_gpu
+                    num_micro_batches = mini_batch.batch.batch_size[0] // self.config.ppo_micro_batch_size_per_gpu
+                    micro_batches = mini_batch.select(select_keys, non_tensor_select_keys).chunk(num_micro_batches)
+                else:
+                    self.gradient_accumulation = self.config.ppo_mini_batch_size // self.config.ppo_micro_batch_size_per_gpu
+                    micro_batches = mini_batch.split(self.config.ppo_micro_batch_size_per_gpu)
+
+                self.actor_optimizer.zero_grad()
+                for micro_batch in micro_batches:
+                    if isinstance(micro_batch, DataProto):
+                        micro_batch = {
+                            **micro_batch.batch.to(get_torch_device().current_device()),
+                            **micro_batch.non_tensor_batch,
+                        }
+                    else:
+                        micro_batch = micro_batch.to(get_torch_device().current_device())
+
+                    responses = micro_batch["responses"]
+                    response_length = responses.size(1)
+                    attention_mask = micro_batch["attention_mask"]
+                    if multi_turn:
+                        response_mask = micro_batch["loss_mask"][:, -response_length:]
+                    else:
+                        response_mask = attention_mask[:, -response_length:]
+
+                    _, log_prob = self._forward_micro_batch(
+                        micro_batch=micro_batch,
+                        temperature=temperature,
+                        calculate_entropy=False,
+                    )
+                    opd_loss = compute_sdl_loss(
+                        student_log_probs=log_prob,
+                        teacher_log_probs=micro_batch["teacher_log_probs"],
+                        old_log_probs=micro_batch["old_log_probs"],
+                        response_mask=response_mask,
+                        loss_agg_mode=self.config.loss_agg_mode,
+                    )
+                    weighted_opd_loss = opd_loss * opd_coef
+                    loss = weighted_opd_loss / self.gradient_accumulation
+                    loss.backward()
+
+                    append_to_dict(
+                        metrics,
+                        {
+                            "opd/loss": opd_loss.detach().item(),
+                            "opd/weighted_loss": weighted_opd_loss.detach().item(),
+                            "opd/coef": opd_coef,
+                        },
+                    )
+
+                grad_norm = self._optimizer_step()
+                append_to_dict(metrics, {"actor/grad_norm": grad_norm.detach().item()})
+
         self.actor_optimizer.zero_grad()
         return metrics

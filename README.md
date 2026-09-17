@@ -38,9 +38,11 @@ SDAR is known as the **first** open-sourced framework that unifies Agentic RL wi
 - **ATOD**: Annealed Turn-Aware On-Policy Distillation for Multi-Turn Agentic Tasks [[Paper]](https://arxiv.org/abs/2606.27814) [[Code]](https://github.com/TanQitai/ATOD)
 - **OPID**: On-Policy Skill Distillation for Agentic Reinforcement Learning [[Paper]](https://arxiv.org/abs/2606.26790) [[Code]](https://github.com/jinyangwu/OPID)
 - **StepOPSD**: Step-Aware Online Preference Distillation for Agent Reinforcement Learning [[Paper]](https://arxiv.org/abs/2605.27140)
+- **RetireOPD**: Self-Retiring On-Policy Distillation for Agentic Reinforcement Learning
 
 
 ## 📢 News
+- **`2026-9-18`**: We released [RetireOPD](), introducing Self-Retiring OPD for Agentic RL.
 - **`2026-8-24`**: 🔥🔥 We released [Agent-G2](https://github.com/ZJU-REAL/Agent-G2), introducing Gaussian hint guidance for Agentic RL.
 - **`2026-8-6`**: 🔥 We released [AgentOPSD](https://github.com/ZethWang/AgentOPSD), introducing **recursive credit update** for SDAR. Featured as 🤗 HF Daily Paper #1!
 - **`2026-7-29`**: We released [SkillRise](https://github.com/Within-yao/SkillRise), introducing **cross-task skill evolution** via agentic RL.
@@ -54,7 +56,7 @@ SDAR is known as the **first** open-sourced framework that unifies Agentic RL wi
 
 | Feature Category  | Supported Capabilities                                       |
 | ----------------- | ------------------------------------------------------------ |
-| **Method**        | ✅ OPSD<br> ✅ GRPO<br> ✅ GRPO+OPSD<br>  ✅ RLSD<br>  ✅ Skill-SD<br>  ✅ **SDAR (Ours)** |
+| **Method**        | ✅ OPD<br> ✅ OPSD<br> ✅ GRPO<br> ✅ GRPO+OPD<br> ✅ GRPO+OPSD<br>  ✅ RLSD<br>  ✅ Skill-SD<br>  ✅ RetireOPD<br>  ✅ **SDAR (Ours)** |
 | **Environment**   | ✅ ALFWorld<br> ✅ WebShop<br> ✅ Search-QA                             |
 | **Model Support** | ✅ Qwen3<br> ✅ Qwen2.5                |
 
@@ -63,6 +65,15 @@ SDAR achieves substantial improvements over the standard RL baseline on ALFWorld
 <div align="center">
   <img src="docs/sdar/metric.png" alt="Logo" style="width:80%;">
 </div>
+
+| Algorithm | Task     | Model                  | Success Rate |
+|-----------|----------|------------------------|----------------------|
+| RetireOPD | ALFWorld | Qwen2.5-1.5B-Instruct | 89.8%                |
+| RetireOPD | ALFWorld | Qwen2.5-3B-Instruct   | 93.8%                |
+| RetireOPD | ALFWorld | Qwen2.5-7B-Instruct   | 95.3%                |
+| RetireOPD | WebShop  | Qwen2.5-1.5B-Instruct | 75.8%                |
+| RetireOPD | WebShop  | Qwen2.5-3B-Instruct   | 77.3%                |
+| RetireOPD | WebShop  | Qwen2.5-7B-Instruct   | 84.4%                |
 
 ## 🛠️ Installation
 
@@ -182,6 +193,7 @@ bash examples/search/retriever/retrieval_launch.sh > retrieval_server.log
 
 ### Training
 
+#### 1. SDAR
 All scripts live under `examples/` and assume the repo root as working directory. You can run e.g.:
 
 ```bash
@@ -189,6 +201,31 @@ bash examples/sdar_trainer/run_alfworld_3b.sh
 bash examples/sdar_trainer/run_search_3b.sh
 bash examples/sdar_trainer/run_webshop_3b.sh
 ```
+
+#### 2. RetireOPD
+RetireOPD uses two-stage training. Phase 1 trains a Skill-GRPO teacher, and Phase 2 uses that teacher for on-policy distillation. We use ALFWorld as an example below:
+
+**Phase 1: Train the teacher**
+```bash
+bash examples/skill_grpo_trainer/run_alfworld_3b.sh
+```
+
+If Phase 1 produces a sharded FSDP checkpoint, merge the actor checkpoint into Hugging Face format before starting Phase 2.
+
+Record the teacher's validation score for the selected environment. It must use the same metric as Phase 2 (`val/success_rate` by default).
+
+**Phase 2: Train RetireOPD**
+
+```bash
+# Replace 0.50 with the teacher's validation success rate.
+
+# ALFWorld
+TEACHER_MODEL_PATH=/path/to/phase1_teacher_hf \
+TEACHER_PERFORMANCE=0.50 \
+bash examples/retireopd_trainer/run_alfworld_3b.sh
+```
+
+#### 3. Other Baselines
 Our reproduced codes for GRPO, Skill-GRPO, OPSD, GRPO+OPSD, Skill-SD, and RLSD are also provided in `examples/`.
 ### Merge checkpoints
 

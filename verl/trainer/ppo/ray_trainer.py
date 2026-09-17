@@ -79,6 +79,7 @@ class Role(Enum):
     RefPolicy = 4
     RewardModel = 5
     ActorRolloutRef = 6
+    TeacherPolicy = 7
 
 
 class AdvantageEstimator(str, Enum):
@@ -429,6 +430,7 @@ class RayPPOTrainer:
         self.role_worker_mapping = role_worker_mapping
         self.resource_pool_manager = resource_pool_manager
         self.use_reference_policy = Role.RefPolicy in role_worker_mapping
+        self.use_teacher_policy = Role.TeacherPolicy in role_worker_mapping
         self.use_rm = Role.RewardModel in role_worker_mapping
         self.ray_worker_group_cls = ray_worker_group_cls
         self.device_name = device_name
@@ -860,6 +862,15 @@ class RayPPOTrainer:
             ref_policy_cls = RayClassWithInitArgs(self.role_worker_mapping[Role.RefPolicy], config=self.config.actor_rollout_ref, role="ref")
             self.resource_pool_to_cls[resource_pool]["ref"] = ref_policy_cls
 
+        if self.use_teacher_policy:
+            resource_pool = self.resource_pool_manager.get_resource_pool(Role.TeacherPolicy)
+            teacher_policy_cls = RayClassWithInitArgs(
+                self.role_worker_mapping[Role.TeacherPolicy],
+                config=self.config.opd_teacher,
+                role="ref",
+            )
+            self.resource_pool_to_cls[resource_pool]["teacher"] = teacher_policy_cls
+
         # create a reward model if reward_fn is None
         if self.use_rm:
             # we create a RM here
@@ -890,6 +901,10 @@ class RayPPOTrainer:
         if self.use_reference_policy and not self.ref_in_actor:
             self.ref_policy_wg = all_wg["ref"]
             self.ref_policy_wg.init_model()
+
+        if self.use_teacher_policy:
+            self.teacher_policy_wg = all_wg["teacher"]
+            self.teacher_policy_wg.init_model()
 
         if self.use_rm:
             self.rm_wg = all_wg["rm"]

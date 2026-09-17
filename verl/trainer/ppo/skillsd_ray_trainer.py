@@ -6,20 +6,24 @@ teacher-weighted advantages, SkillSD keeps the original GRPO advantages and
 adds an auxiliary SDL loss computed inside the actor's update_policy().
 """
 
-from pprint import pprint
-
 import json
 import os
+from pprint import pprint
 
 import numpy as np
 import ray
 import torch
 from tqdm import tqdm
 
+from agent_system.multi_turn_rollout import adjust_batch
 from verl import DataProto
 from verl.trainer.ppo.core_algos import agg_loss
+from verl.trainer.ppo.metric_utils import (
+    compute_data_metrics,
+    compute_throughout_metrics,
+    compute_timing_metrics,
+)
 from verl.trainer.ppo.ray_trainer import (
-    RayPPOTrainer,
     _timer,
     apply_invalid_action_penalty,
     apply_kl_penalty,
@@ -27,17 +31,10 @@ from verl.trainer.ppo.ray_trainer import (
     compute_response_mask,
 )
 from verl.trainer.ppo.reward import compute_reward, compute_reward_async
+from verl.trainer.ppo.rlsd_ray_trainer import RLSDRayTrainer
 from verl.trainer.ppo.rlsd_utils import SkillProvider
-from verl.trainer.ppo.rlsd_ray_trainer import RLSDRayTrainer, build_teacher_batch
 from verl.utils.metric import reduce_metrics
 from verl.utils.torch_functional import masked_mean
-from verl.trainer.ppo.metric_utils import (
-    compute_data_metrics,
-    compute_throughout_metrics,
-    compute_timing_metrics,
-)
-
-from agent_system.multi_turn_rollout import adjust_batch
 
 
 class SkillSDRayTrainer(RLSDRayTrainer):
@@ -61,6 +58,21 @@ class SkillSDRayTrainer(RLSDRayTrainer):
             return 0.0
         return self.sdl_lambda * (1.0 - step / self.sdl_warmdown_steps)
 
+    def _get_training_teacher_log_probs(self, batch: DataProto):
+        """Return teacher log probabilities and optional per-step metrics."""
+
+        return self._compute_teacher_log_probs(batch), {}
+
+    def _after_teacher_student_gap(self, step: int, gap_mean: float) -> dict:
+        """Hook for trainers that consume the observed teacher-student gap."""
+
+        return {}
+
+    def _after_validation(self, step: int, val_metrics: dict) -> dict:
+        """Hook for trainers that consume validation results."""
+
+        return {}
+
     def fit(self):
         """
         The training loop of SkillSD. Identical to RLSD except:
@@ -68,6 +80,7 @@ class SkillSDRayTrainer(RLSDRayTrainer):
         - teacher_log_probs are passed through to the actor for SDL loss
         """
         from omegaconf import OmegaConf
+
         from verl.utils.tracking import Tracking
 
         logger = Tracking(
@@ -158,8 +171,9 @@ class SkillSDRayTrainer(RLSDRayTrainer):
 
                     # ---- SkillSD: Teacher forward pass (same as RLSD) ----
                     with _timer("teacher_forward", timing_raw):
-                        teacher_log_probs = self._compute_teacher_log_probs(batch)
+                        teacher_log_probs, teacher_metrics = self._get_training_teacher_log_probs(batch)
                         batch.batch["teacher_log_probs"] = teacher_log_probs
+                        metrics.update(teacher_metrics)
 
                     if self.use_reference_policy:
                         with _timer("ref", timing_raw):
@@ -225,9 +239,11 @@ class SkillSDRayTrainer(RLSDRayTrainer):
                         teacher_lp = batch.batch["teacher_log_probs"]
                         delta_t = (teacher_lp - student_log_probs) * response_mask
                         current_sdl_lambda = self._get_sdl_lambda(self.global_steps)
-                        metrics["skillsd/teacher_student_gap_mean"] = masked_mean(delta_t, response_mask).item()
+                        gap_mean = masked_mean(delta_t, response_mask).item()
+                        metrics["skillsd/teacher_student_gap_mean"] = gap_mean
                         metrics["skillsd/teacher_student_gap_std"] = masked_mean(delta_t ** 2, response_mask).sqrt().item()
                         metrics["skillsd/sdl_lambda"] = current_sdl_lambda
+                        metrics.update(self._after_teacher_student_gap(self.global_steps, gap_mean))
 
                         # Save per-token gap data if SAVE_SDAR_DEBUG=1, at test_freq interval
                         if os.environ.get("SAVE_SDAR_DEBUG", "0") == "1" and \
@@ -284,6 +300,7 @@ class SkillSDRayTrainer(RLSDRayTrainer):
                     if self.config.trainer.critic_warmup <= self.global_steps:
                         with _timer("update_actor", timing_raw):
                             batch.meta_info["multi_turn"] = self.config.actor_rollout_ref.rollout.multi_turn.enable
+                            batch.meta_info["sdl_coef"] = current_sdl_lambda
                             actor_output = self.actor_rollout_wg.update_actor(batch)
                         actor_output_metrics = reduce_metrics(actor_output.meta_info["metrics"])
                         metrics.update(actor_output_metrics)
@@ -309,6 +326,7 @@ class SkillSDRayTrainer(RLSDRayTrainer):
                             if is_last_step:
                                 last_val_metrics = val_metrics
                         metrics.update(val_metrics)
+                        metrics.update(self._after_validation(self.global_steps, val_metrics))
 
                     if self.config.trainer.save_freq > 0 and (is_last_step or self.global_steps % self.config.trainer.save_freq == 0):
                         with _timer("save_checkpoint", timing_raw):
