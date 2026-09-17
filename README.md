@@ -204,26 +204,25 @@ bash examples/sdar_trainer/run_webshop_3b.sh
 ```
 
 #### 2. RetireOPD
-RetireOPD uses two-stage training. Phase 1 trains a Skill-GRPO teacher, and Phase 2 uses that teacher for on-policy distillation. We use ALFWorld as an example below:
+RetireOPD uses two-stage training (ALFWorld for example):
 
-**Phase 1: Train the teacher**
 ```bash
+# Phase 1: Train the teacher
+
 bash examples/skill_grpo_trainer/run_alfworld_3b.sh
+
+# If Phase 1 produces a sharded FSDP checkpoint, merge the actor checkpoint into Hugging Face format before starting Phase 2.
+# Record the teacher's validation score for the selected environment, which is the same metric as Phase 2 (`val/success_rate` by default).
 ```
 
-If Phase 1 produces a sharded FSDP checkpoint, merge the actor checkpoint into Hugging Face format before starting Phase 2.
-
-Record the teacher's validation score for the selected environment. It must use the same metric as Phase 2 (`val/success_rate` by default).
-
-**Phase 2: Train RetireOPD**
-
 ```bash
-# Replace 0.50 with the teacher's validation success rate.
+# Phase 2: Train the RetireOPD
 
-# ALFWorld
 TEACHER_MODEL_PATH=/path/to/phase1_teacher_hf \
 TEACHER_PERFORMANCE=0.50 \
 bash examples/retireopd_trainer/run_alfworld_3b.sh
+
+# Replace 0.50 with the teacher's validation success rate.
 ```
 
 #### 3. Other Baselines
