@@ -56,7 +56,7 @@ SDAR is known as the **first** open-sourced framework that unifies Agentic RL wi
 
 | Feature Category  | Supported Capabilities                                       |
 | ----------------- | ------------------------------------------------------------ |
-| **Method**        | ✅ OPD<br> ✅ OPSD<br> ✅ GRPO<br> ✅ GRPO+OPD<br> ✅ GRPO+OPSD<br>  ✅ RLSD<br>  ✅ Skill-SD<br>  ✅ RetireOPD<br>  ✅ **SDAR (Ours)** |
+| **Method**        | ✅ OP(S)D<br> ✅ GRPO<br> ✅ GRPO+OP(S)D<br>  ✅ RLSD<br>  ✅ Skill-SD<br> ✅ **SDAR (Ours)**<br> ✅ **RetireOPD (Ours)**<br>|
 | **Environment**   | ✅ ALFWorld<br> ✅ WebShop<br> ✅ Search-QA                             |
 | **Model Support** | ✅ Qwen3<br> ✅ Qwen2.5                |
 
@@ -65,6 +65,7 @@ SDAR achieves substantial improvements over the standard RL baseline on ALFWorld
 <div align="center">
   <img src="docs/sdar/metric.png" alt="Logo" style="width:80%;">
 </div>
+
 
 | Algorithm | Task     | Model                  | Success Rate |
 |-----------|----------|------------------------|----------------------|
@@ -226,7 +227,7 @@ bash examples/retireopd_trainer/run_alfworld_3b.sh
 ```
 
 #### 3. Other Baselines
-Our reproduced codes for GRPO, Skill-GRPO, OPSD, GRPO+OPSD, Skill-SD, and RLSD are also provided in `examples/`.
+Our reproduced codes for GRPO, Skill-GRPO, OP(S)D, GRPO+OP(S)D, Skill-SD, and RLSD are also provided in `examples/`.
 ### Merge checkpoints
 
 See `scripts/model_merger.py` for FSDP/Megatron merge examples using paths under `./checkpoints/...`.
