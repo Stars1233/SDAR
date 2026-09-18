@@ -38,11 +38,11 @@ SDAR is known as the **first** open-sourced framework that unifies Agentic RL wi
 - **ATOD**: Annealed Turn-Aware On-Policy Distillation for Multi-Turn Agentic Tasks [[Paper]](https://arxiv.org/abs/2606.27814) [[Code]](https://github.com/TanQitai/ATOD)
 - **OPID**: On-Policy Skill Distillation for Agentic Reinforcement Learning [[Paper]](https://arxiv.org/abs/2606.26790) [[Code]](https://github.com/jinyangwu/OPID)
 - **StepOPSD**: Step-Aware Online Preference Distillation for Agent Reinforcement Learning [[Paper]](https://arxiv.org/abs/2605.27140)
-- **RetireOPD**: Self-Retiring On-Policy Distillation for Agentic Reinforcement Learning
+- **RetireOPD**: Self-Retiring On-Policy Distillation for Agentic Reinforcement Learning [[Paper]](https://arxiv.org/abs/2609.20784)
 
 
 ## 📢 News
-- **`2026-9-18`**: We released [RetireOPD](), introducing Self-Retiring OPD for Agentic RL.
+- **`2026-9-18`**: We released [RetireOPD](https://github.com/ZJU-REAL/SDAR), introducing Self-Retiring OPD for Agentic RL.
 - **`2026-8-24`**: 🔥🔥 We released [Agent-G2](https://github.com/ZJU-REAL/Agent-G2), introducing Gaussian hint guidance for Agentic RL.
 - **`2026-8-6`**: 🔥 We released [AgentOPSD](https://github.com/ZethWang/AgentOPSD), introducing **recursive credit update** for SDAR. Featured as 🤗 HF Daily Paper #1!
 - **`2026-7-29`**: We released [SkillRise](https://github.com/Within-yao/SkillRise), introducing **cross-task skill evolution** via agentic RL.
@@ -286,6 +286,15 @@ If you find this project useful, welcome to cite us.
       archivePrefix={arXiv},
       primaryClass={cs.AI},
       url={https://arxiv.org/abs/2608.23318},
+}
+@misc{yu2026retireopd,
+      title={RetireOPD: Self-Retiring On-Policy Distillation for Agentic Reinforcement Learning}, 
+      author={Yan Yu and Zhengxi Lu and Yizhou Liu and Yichen Pan and Aozhe Wang and Qipeng Chen and Hua Yang and Wenqi Zhang and Weiming Lu and Qianglong Chen and Yongliang Shen},
+      year={2026},
+      eprint={2609.20784},
+      archivePrefix={arXiv},
+      primaryClass={cs.CL},
+      url={https://arxiv.org/abs/2609.20784}, 
 }
 ```
 
