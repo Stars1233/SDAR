@@ -27,6 +27,7 @@ We introduce **SDAR**, a Self-Distilled Agentic Reinforcement learning method wi
 
 ## 🗞️ Awesome Work Powered by SDAR
 SDAR is known as the **first** open-sourced framework that unifies Agentic RL with OP(S)D, providing a codebase that has supported the following works (listed in reverse time order and most recent first):
+- **RetireOPD**: Self-Retiring On-Policy Distillation for Agentic Reinforcement Learning [[Paper]](https://arxiv.org/abs/2609.20784) [[Code]](https://github.com/ZJU-REAL/SDAR)
 - **TASPO**: Reconciling Process Supervision with Outcome-Based Credit in Agentic Policy Optimization [[Paper]](https://arxiv.org/abs/2608.31077)
 - **AHEAD**: Adaptive Hindsight with Environment-Augmented Distillation for Agentic RL [[Paper]](https://arxiv.org/abs/2608.24114) [[Code]](https://jinxiaolong1129.github.io/AHEAD/)
 - **ICSD**: Trust Is Not Enough: Influence Calibration for On-Policy Self-Distillation in Agentic RL [[Paper]](https://arxiv.org/abs/2608.14945) [[Code]](https://github.com/lanqz7766/Influence-Calibration-for-On-Policy-Self-Distillation-in-Agentic-RL)
@@ -44,7 +45,7 @@ SDAR is known as the **first** open-sourced framework that unifies Agentic RL wi
 - **ATOD**: Annealed Turn-Aware On-Policy Distillation for Multi-Turn Agentic Tasks [[Paper]](https://arxiv.org/abs/2606.27814) [[Code]](https://github.com/TanQitai/ATOD)
 - **OPID**: On-Policy Skill Distillation for Agentic Reinforcement Learning [[Paper]](https://arxiv.org/abs/2606.26790) [[Code]](https://github.com/jinyangwu/OPID)
 - **StepOPSD**: Step-Aware Online Preference Distillation for Agent Reinforcement Learning [[Paper]](https://arxiv.org/abs/2605.27140)
-- **RetireOPD**: Self-Retiring On-Policy Distillation for Agentic Reinforcement Learning [[Paper]](https://arxiv.org/abs/2609.20784)
+
 
 
 ## 📢 News
