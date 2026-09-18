@@ -11,7 +11,7 @@ Self-Distilled Agentic Reinforcement Learning
     </a>
     <br>
     <a href="https://arxiv.org/abs/2609.20784">
-      <img src="https://img.shields.io/badge/Paper-arxiv%3A2605.15155-blue" alt="Paper"/>
+      <img src="https://img.shields.io/badge/Paper-arxiv%3A2609.20784-blue" alt="Paper"/>
     </a>
     <a href="https://huggingface.co/papers/2609.20784">
       <img src="https://img.shields.io/badge/Daily%20Paper-huggingface-yellow" alt="HF Paper"/>
